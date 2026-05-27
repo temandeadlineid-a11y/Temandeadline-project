@@ -653,49 +653,6 @@ function toggleTheme(){
   }, {threshold: 0.1});
   document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-  // Auto Slider Logic untuk Testimoni
-  const slider = document.getElementById('testiSlider');
-  if (slider) {
-    let scrollAmount = 0;
-    let slideTimer;
-
-    function autoSlide() {
-      // Ambil ukuran satu kartu beserta jarak gap (20px)
-      const firstCard = slider.querySelector('.testi-card');
-      if(!firstCard) return;
-      const cardWidth = firstCard.offsetWidth + 20; 
-      const maxScroll = slider.scrollWidth - slider.clientWidth;
-      
-      scrollAmount += cardWidth;
-      
-      // Reset ke awal jika mentok
-      if (scrollAmount > maxScroll + 10) { 
-        scrollAmount = 0;
-      }
-      
-      slider.scrollTo({
-        top: 0,
-        left: scrollAmount,
-        behavior: 'smooth'
-      });
-    }
-
-    // Set interval untuk geser otomatis (3000 ms = 3 detik)
-    slideTimer = setInterval(autoSlide, 3000);
-
-    // Hentikan slider kalau user lagi geser manual pakai mouse atau sentuh layar hp
-    slider.addEventListener('mouseenter', () => clearInterval(slideTimer));
-    slider.addEventListener('mouseleave', () => slideTimer = setInterval(autoSlide, 3000));
-    slider.addEventListener('touchstart', () => clearInterval(slideTimer));
-    slider.addEventListener('touchend', () => {
-      // Sinkronkan kembali posisi scroll agar tidak melompat setelah user geser manual
-      setTimeout(() => {
-        const cardWidth = slider.querySelector('.testi-card').offsetWidth + 20;
-        scrollAmount = Math.round(slider.scrollLeft / cardWidth) * cardWidth;
-        slideTimer = setInterval(autoSlide, 3000);
-      }, 2000);
-    });
-  }
 })();
 </script>
 
