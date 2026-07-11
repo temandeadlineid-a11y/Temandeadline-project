@@ -1,0 +1,81 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Admin {
+  id        String   @id @default(cuid())
+  username  String   @unique
+  password  String
+  name      String   @default("Admin")
+  createdAt DateTime @default(now())
+}
+
+model Service {
+  id          String  @id @default(cuid())
+  emoji       String  @default("📝")
+  title       String
+  description String
+  order       Int     @default(0)
+  active      Boolean @default(true)
+}
+
+model PricingTier {
+  id          String  @id @default(cuid())
+  name        String
+  price       String
+  unit        String  @default("mulai dari")
+  description String  @default("")
+  features    String  @default("[]")
+  popular     Boolean @default(false)
+  order       Int     @default(0)
+  active      Boolean @default(true)
+}
+
+model Testimonial {
+  id      String  @id @default(cuid())
+  name    String
+  role    String
+  content String
+  rating  Int     @default(5)
+  order   Int     @default(0)
+  active  Boolean @default(true)
+}
+
+model Faq {
+  id       String  @id @default(cuid())
+  question String
+  answer   String
+  order    Int     @default(0)
+  active   Boolean @default(true)
+}
+
+model TeamMember {
+  id       String   @id @default(cuid())
+  name     String
+  role     String
+  contact  String   @default("")
+  notes    String   @default("")
+  active   Boolean  @default(true)
+  joinedAt DateTime @default(now())
+}
+
+model SiteContent {
+  key   String @id
+  value String
+}
+
+model Event {
+  id        String   @id @default(cuid())
+  type      String
+  path      String   @default("/")
+  referrer  String   @default("")
+  device    String   @default("desktop")
+  createdAt DateTime @default(now())
+
+  @@index([type, createdAt])
+}
