@@ -14,7 +14,13 @@ export function parseFeatures(json: string): string[] {
 }
 
 export function buildWaLink(number: string, message: string) {
-  const clean = number.replace(/[^0-9]/g, "");
+  let clean = number.replace(/[^0-9]/g, "");
+  // Nomor lokal Indonesia (mis. 0895...) perlu diubah ke format
+  // internasional (628xx...) supaya wa.me/api.whatsapp.com bisa membuka
+  // chat-nya. Tanpa ini, angka 0 di depan dibaca sebagai bagian nomor.
+  if (clean.startsWith("0")) {
+    clean = "62" + clean.slice(1);
+  }
   return `https://wa.me/${clean}?text=${encodeURIComponent(message)}`;
 }
 
