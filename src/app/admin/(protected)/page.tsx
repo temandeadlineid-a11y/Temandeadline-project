@@ -6,6 +6,7 @@ import {
   Users,
   Eye,
   MessageCircle,
+  Inbox,
   ArrowRight,
   BarChart3,
   PenSquare,
@@ -22,7 +23,7 @@ async function getCounts() {
     const startOfToday = new Date();
     startOfToday.setHours(0, 0, 0, 0);
 
-    const [services, testimonials, faqs, team, viewsToday, clicksToday] =
+    const [services, testimonials, faqs, team, viewsToday, clicksToday, newMessages] =
       await Promise.all([
         prisma.service.count(),
         prisma.testimonial.count(),
@@ -34,10 +35,11 @@ async function getCounts() {
         prisma.event.count({
           where: { type: "wa_click", createdAt: { gte: startOfToday } },
         }),
+        prisma.message.count({ where: { status: "new" } }),
       ]);
-    return { ok: true, services, testimonials, faqs, team, viewsToday, clicksToday };
+    return { ok: true, services, testimonials, faqs, team, viewsToday, clicksToday, newMessages };
   } catch {
-    return { ok: false, services: 0, testimonials: 0, faqs: 0, team: 0, viewsToday: 0, clicksToday: 0 };
+    return { ok: false, services: 0, testimonials: 0, faqs: 0, team: 0, viewsToday: 0, clicksToday: 0, newMessages: 0 };
   }
 }
 
@@ -89,7 +91,24 @@ export default async function AdminDashboardPage() {
       )}
 
       {/* Statistik hari ini */}
-      <div className="grid gap-4 sm:grid-cols-2">
+      <div className="grid gap-4 sm:grid-cols-3">
+        <Link href="/admin/pesan">
+          <Card
+            className={`flex h-full items-center gap-4 p-5 transition-all hover:-translate-y-0.5 hover:shadow-soft ${
+              counts.newMessages > 0 ? "border-pink-200 bg-pink-50/50" : ""
+            }`}
+          >
+            <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-pink-50">
+              <Inbox className="h-6 w-6 text-pink-600" />
+            </div>
+            <div>
+              <div className="font-display text-3xl font-semibold text-navy-800">
+                {counts.newMessages}
+              </div>
+              <div className="text-sm text-slate-500">Pesan masuk baru</div>
+            </div>
+          </Card>
+        </Link>
         <Card className="flex items-center gap-4 p-5">
           <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-navy-50">
             <Eye className="h-6 w-6 text-navy-700" />

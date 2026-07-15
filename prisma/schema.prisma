@@ -79,3 +79,15 @@ model Event {
 
   @@index([type, createdAt])
 }
+
+model Message {
+  id        String   @id @default(cuid())
+  name      String   @default("")
+  service   String   @default("")
+  detail    String   @default("")
+  source    String   @default("")
+  status    String   @default("new")
+  createdAt DateTime @default(now())
+
+  @@index([status, createdAt])
+}

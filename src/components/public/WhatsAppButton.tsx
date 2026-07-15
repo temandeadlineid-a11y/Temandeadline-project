@@ -4,6 +4,7 @@ import { usePathname } from "next/navigation";
 import { MessageCircle } from "lucide-react";
 import { buildWaLink, cn } from "@/lib/utils";
 import { trackWaClick } from "@/components/public/AnalyticsTracker";
+import { sendInboxMessage } from "@/lib/sendInboxMessage";
 
 type Props = {
   whatsapp: string;
@@ -29,7 +30,10 @@ export function WhatsAppButton({
       href={buildWaLink(whatsapp, message)}
       target="_blank"
       rel="noopener noreferrer"
-      onClick={() => trackWaClick(pathname || "/")}
+      onClick={() => {
+        trackWaClick(pathname || "/");
+        sendInboxMessage({ detail: message, source: pathname || "/" });
+      }}
       className={cn(
         "inline-flex items-center justify-center gap-2 rounded-full font-semibold transition-all duration-200 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink-500 focus-visible:ring-offset-2",
         size === "lg" ? "px-7 py-3.5 text-base" : "px-5 py-2.5 text-sm",

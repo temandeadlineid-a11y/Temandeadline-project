@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Send } from "lucide-react";
 import { buildWaLink } from "@/lib/utils";
 import { trackWaClick } from "@/components/public/AnalyticsTracker";
+import { sendInboxMessage } from "@/lib/sendInboxMessage";
 
 // Form ini tidak butuh backend email: isiannya otomatis dirangkai
 // menjadi pesan WhatsApp yang rapi, lalu membuka chat WA.
@@ -38,6 +39,12 @@ export function ContactForm({ whatsapp }: { whatsapp: string }) {
     ].join("\n");
 
     trackWaClick("/kontak");
+    sendInboxMessage({
+      name: nama,
+      service: jenis,
+      detail: pesan,
+      source: "/kontak",
+    });
     window.open(buildWaLink(whatsapp, pesan), "_blank", "noopener,noreferrer");
   }
 

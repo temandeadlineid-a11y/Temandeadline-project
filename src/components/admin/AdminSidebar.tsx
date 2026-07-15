@@ -8,6 +8,7 @@ import {
   BarChart3,
   PenSquare,
   Layers,
+  Inbox,
   MessageSquareQuote,
   HelpCircle,
   Users,
@@ -20,6 +21,7 @@ import { cn } from "@/lib/utils";
 
 const menu = [
   { href: "/admin", label: "Dashboard", icon: LayoutDashboard },
+  { href: "/admin/pesan", label: "Pesan Masuk", icon: Inbox },
   { href: "/admin/analytics", label: "Analytics", icon: BarChart3 },
   { href: "/admin/konten", label: "Konten Situs", icon: PenSquare },
   { href: "/admin/layanan", label: "Layanan", icon: Layers },

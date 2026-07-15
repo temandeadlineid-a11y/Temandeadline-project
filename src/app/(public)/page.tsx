@@ -123,6 +123,7 @@ export default async function HomePage() {
                 emoji={s.emoji}
                 title={s.title}
                 description={s.description}
+                whatsapp={content.whatsapp}
               />
             </Reveal>
           ))}

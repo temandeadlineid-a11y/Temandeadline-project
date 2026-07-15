@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { cn, buildWaLink } from "@/lib/utils";
 import { trackWaClick } from "@/components/public/AnalyticsTracker";
+import { sendInboxMessage } from "@/lib/sendInboxMessage";
 
 const links = [
   { href: "/", label: "Beranda" },
@@ -69,7 +70,10 @@ export function Navbar({
             href={buildWaLink(whatsapp, waMessage)}
             target="_blank"
             rel="noopener noreferrer"
-            onClick={() => trackWaClick(pathname)}
+            onClick={() => {
+              trackWaClick(pathname);
+              sendInboxMessage({ detail: waMessage, source: pathname || "/" });
+            }}
             className="rounded-full bg-pink-600 px-5 py-2.5 text-sm font-semibold text-white shadow-pinkglow transition-all duration-200 hover:-translate-y-0.5 hover:bg-pink-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink-500 focus-visible:ring-offset-2"
           >
             Konsultasi Gratis
@@ -107,7 +111,10 @@ export function Navbar({
             href={buildWaLink(whatsapp, waMessage)}
             target="_blank"
             rel="noopener noreferrer"
-            onClick={() => trackWaClick(pathname)}
+            onClick={() => {
+              trackWaClick(pathname);
+              sendInboxMessage({ detail: waMessage, source: pathname || "/" });
+            }}
             className="mt-3 block rounded-full bg-pink-600 px-5 py-3 text-center text-sm font-semibold text-white transition-colors hover:bg-pink-700"
           >
             Konsultasi Gratis

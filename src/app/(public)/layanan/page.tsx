@@ -33,6 +33,7 @@ export default async function LayananPage() {
                 emoji={s.emoji}
                 title={s.title}
                 description={s.description}
+                whatsapp={content.whatsapp}
               />
             </Reveal>
           ))}

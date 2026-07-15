@@ -3,6 +3,7 @@ import { Instagram, Mail, Clock, MessageCircle } from "lucide-react";
 import { getContent } from "@/lib/data";
 import { PageHero } from "@/components/public/PageHero";
 import { ContactForm } from "@/components/public/ContactForm";
+import { ContactChannelLink } from "@/components/public/ContactChannelLink";
 import { Reveal } from "@/components/public/Reveal";
 import { buildWaLink } from "@/lib/utils";
 
@@ -24,6 +25,7 @@ export default async function KontakPage() {
       value: `+${content.whatsapp}`,
       note: "Cara tercepat, respon < 1 jam",
       href: buildWaLink(content.whatsapp, content.waMessage),
+      waMessage: content.waMessage,
     },
     {
       icon: Mail,
@@ -56,24 +58,15 @@ export default async function KontakPage() {
           <Reveal>
             <div className="space-y-4">
               {channels.map((c) => (
-                <a
+                <ContactChannelLink
                   key={c.title}
+                  icon={<c.icon className="h-5 w-5 text-pink-600" />}
+                  title={c.title}
+                  value={c.value}
+                  note={c.note}
                   href={c.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-start gap-4 rounded-2xl border border-slate-200 bg-white p-5 transition-all duration-200 hover:-translate-y-0.5 hover:border-pink-200 hover:shadow-soft"
-                >
-                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-pink-50">
-                    <c.icon className="h-5 w-5 text-pink-600" />
-                  </div>
-                  <div>
-                    <div className="font-bold text-navy-800">{c.title}</div>
-                    <div className="text-sm text-slate-600">{c.value}</div>
-                    <div className="mt-0.5 text-xs text-slate-400">
-                      {c.note}
-                    </div>
-                  </div>
-                </a>
+                  waMessage={c.waMessage}
+                />
               ))}
 
               <div className="flex items-start gap-4 rounded-2xl border border-pink-100 bg-pink-50/60 p-5">
