@@ -49,7 +49,6 @@ export default async function TestimoniPage() {
             </p>
             <div className="mt-5">
               <WhatsAppButton
-                whatsapp={content.whatsapp}
                 message={content.waMessage}
               />
             </div>

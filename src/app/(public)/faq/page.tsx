@@ -40,7 +40,6 @@ export default async function FaqPage() {
             </p>
             <div className="mt-6">
               <WhatsAppButton
-                whatsapp={content.whatsapp}
                 message="Halo TemanDeadline! Saya punya pertanyaan yang belum ada di FAQ."
                 label={content.faqCtaButtonLabel}
                 size="md"

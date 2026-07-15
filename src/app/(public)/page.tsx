@@ -72,7 +72,6 @@ export default async function HomePage() {
 
             <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
               <WhatsAppButton
-                whatsapp={content.whatsapp}
                 message={content.waMessage}
                 className="w-full sm:w-auto"
               />
@@ -123,7 +122,6 @@ export default async function HomePage() {
                 emoji={s.emoji}
                 title={s.title}
                 description={s.description}
-                whatsapp={content.whatsapp}
               />
             </Reveal>
           ))}
@@ -251,7 +249,6 @@ export default async function HomePage() {
               </p>
               <div className="mt-8">
                 <WhatsAppButton
-                  whatsapp={content.whatsapp}
                   message={content.waMessage}
                   label="Mulai Konsultasi Gratis"
                 />

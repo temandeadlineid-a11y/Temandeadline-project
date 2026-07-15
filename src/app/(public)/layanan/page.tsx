@@ -33,7 +33,6 @@ export default async function LayananPage() {
                 emoji={s.emoji}
                 title={s.title}
                 description={s.description}
-                whatsapp={content.whatsapp}
               />
             </Reveal>
           ))}
@@ -49,7 +48,6 @@ export default async function LayananPage() {
             </p>
             <div className="mt-7">
               <WhatsAppButton
-                whatsapp={content.whatsapp}
                 message={content.layananCtaWaMessage}
                 label={content.layananCtaButtonLabel}
               />

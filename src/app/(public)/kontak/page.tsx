@@ -5,7 +5,6 @@ import { PageHero } from "@/components/public/PageHero";
 import { ContactForm } from "@/components/public/ContactForm";
 import { ContactChannelLink } from "@/components/public/ContactChannelLink";
 import { Reveal } from "@/components/public/Reveal";
-import { buildWaLink } from "@/lib/utils";
 
 export const dynamic = "force-dynamic";
 
@@ -24,7 +23,7 @@ export default async function KontakPage() {
       title: "WhatsApp",
       value: `+${content.whatsapp}`,
       note: "Cara tercepat, respon < 1 jam",
-      href: buildWaLink(content.whatsapp, content.waMessage),
+      href: "",
       waMessage: content.waMessage,
     },
     {
@@ -90,7 +89,7 @@ export default async function KontakPage() {
 
           {/* Form konsultasi */}
           <Reveal delay={100}>
-            <ContactForm whatsapp={content.whatsapp} />
+            <ContactForm />
           </Reveal>
         </div>
       </section>

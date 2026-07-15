@@ -1,20 +1,20 @@
 "use client";
 
 import { useState } from "react";
-import { Send } from "lucide-react";
-import { buildWaLink } from "@/lib/utils";
+import { Send, CheckCircle2 } from "lucide-react";
 import { trackWaClick } from "@/components/public/AnalyticsTracker";
 import { sendInboxMessage } from "@/lib/sendInboxMessage";
 
-// Form ini tidak butuh backend email: isiannya otomatis dirangkai
-// menjadi pesan WhatsApp yang rapi, lalu membuka chat WA.
-// Lebih cepat untuk klien, lebih mudah untuk pemilik bisnis.
+// Form ini TIDAK membuka WhatsApp langsung. Isiannya dirangkai jadi satu
+// pesan lalu dicatat ke "Pesan Masuk" admin, untuk disaring dan dibalas
+// dari sana.
 
-export function ContactForm({ whatsapp }: { whatsapp: string }) {
+export function ContactForm() {
   const [nama, setNama] = useState("");
   const [jenis, setJenis] = useState("Makalah / Esai");
   const [deadline, setDeadline] = useState("");
   const [detail, setDetail] = useState("");
+  const [sent, setSent] = useState(false);
 
   const jenisOptions = [
     "Makalah / Esai",
@@ -45,11 +45,40 @@ export function ContactForm({ whatsapp }: { whatsapp: string }) {
       detail: pesan,
       source: "/kontak",
     });
-    window.open(buildWaLink(whatsapp, pesan), "_blank", "noopener,noreferrer");
+    setSent(true);
+  }
+
+  function handleReset() {
+    setNama("");
+    setJenis("Makalah / Esai");
+    setDeadline("");
+    setDetail("");
+    setSent(false);
   }
 
   const inputClass =
     "mt-1.5 w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm text-navy-800 placeholder:text-slate-400 transition-colors focus:border-pink-500 focus:outline-none focus:ring-2 focus:ring-pink-500/20";
+
+  if (sent) {
+    return (
+      <div className="flex flex-col items-center justify-center rounded-3xl border border-slate-200 bg-white p-6 text-center shadow-soft md:p-8">
+        <CheckCircle2 className="h-12 w-12 text-emerald-500" />
+        <h2 className="mt-4 font-display text-2xl font-semibold text-navy-800">
+          Pesan Terkirim!
+        </h2>
+        <p className="mt-2 max-w-sm text-sm text-slate-500">
+          Tim kami sudah menerima pesanmu dan akan segera menghubungi via
+          WhatsApp.
+        </p>
+        <button
+          onClick={handleReset}
+          className="mt-6 inline-flex items-center justify-center gap-2 rounded-full border border-slate-300 bg-white px-6 py-2.5 text-sm font-semibold text-navy-800 transition-colors hover:border-pink-300 hover:bg-pink-50"
+        >
+          Kirim Pesan Lain
+        </button>
+      </div>
+    );
+  }
 
   return (
     <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-soft md:p-8">
@@ -57,7 +86,7 @@ export function ContactForm({ whatsapp }: { whatsapp: string }) {
         Konsultasi Cepat
       </h2>
       <p className="mt-1.5 text-sm text-slate-500">
-        Isi form ini dan pesanmu akan otomatis tersusun rapi di WhatsApp.
+        Isi form ini dan pesanmu akan langsung masuk ke tim kami.
       </p>
 
       <div className="mt-6 space-y-4">
@@ -139,10 +168,10 @@ export function ContactForm({ whatsapp }: { whatsapp: string }) {
           className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-pink-600 px-7 py-3.5 font-semibold text-white shadow-pinkglow transition-all duration-200 hover:-translate-y-0.5 hover:bg-pink-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink-500 focus-visible:ring-offset-2"
         >
           <Send className="h-4 w-4" />
-          Kirim via WhatsApp
+          Kirim Pesan
         </button>
         <p className="text-center text-xs text-slate-400">
-          Kamu akan diarahkan ke WhatsApp. Gratis, tanpa komitmen.
+          Tim kami akan menghubungimu via WhatsApp. Gratis, tanpa komitmen.
         </p>
       </div>
     </div>

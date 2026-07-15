@@ -3,8 +3,8 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { Menu, X } from "lucide-react";
-import { cn, buildWaLink } from "@/lib/utils";
+import { Menu, X, Check } from "lucide-react";
+import { cn } from "@/lib/utils";
 import { trackWaClick } from "@/components/public/AnalyticsTracker";
 import { sendInboxMessage } from "@/lib/sendInboxMessage";
 
@@ -15,20 +15,23 @@ const links = [
   { href: "/faq", label: "FAQ" },
 ];
 
-export function Navbar({
-  whatsapp,
-  waMessage,
-}: {
-  whatsapp: string;
-  waMessage: string;
-}) {
+export function Navbar({ waMessage }: { waMessage: string }) {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const [sent, setSent] = useState(false);
 
   // Tutup menu mobile otomatis setiap pindah halaman
   useEffect(() => {
     setOpen(false);
   }, [pathname]);
+
+  function handleClick() {
+    if (sent) return;
+    trackWaClick(pathname || "/");
+    sendInboxMessage({ detail: waMessage, source: pathname || "/" });
+    setSent(true);
+    setTimeout(() => setSent(false), 5000);
+  }
 
   return (
     <header className="sticky top-0 z-50 border-b border-slate-100 bg-white/85 backdrop-blur-md">
@@ -66,18 +69,20 @@ export function Navbar({
               </Link>
             );
           })}
-          <a
-            href={buildWaLink(whatsapp, waMessage)}
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={() => {
-              trackWaClick(pathname);
-              sendInboxMessage({ detail: waMessage, source: pathname || "/" });
-            }}
-            className="rounded-full bg-pink-600 px-5 py-2.5 text-sm font-semibold text-white shadow-pinkglow transition-all duration-200 hover:-translate-y-0.5 hover:bg-pink-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink-500 focus-visible:ring-offset-2"
+          <button
+            type="button"
+            onClick={handleClick}
+            disabled={sent}
+            className="inline-flex items-center gap-1.5 rounded-full bg-pink-600 px-5 py-2.5 text-sm font-semibold text-white shadow-pinkglow transition-all duration-200 hover:-translate-y-0.5 hover:bg-pink-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink-500 focus-visible:ring-offset-2 disabled:cursor-default disabled:hover:translate-y-0"
           >
-            Konsultasi Gratis
-          </a>
+            {sent ? (
+              <>
+                <Check className="h-4 w-4" /> Terkirim!
+              </>
+            ) : (
+              "Konsultasi Gratis"
+            )}
+          </button>
         </div>
 
         {/* Tombol menu mobile */}
@@ -107,18 +112,20 @@ export function Navbar({
               {l.label}
             </Link>
           ))}
-          <a
-            href={buildWaLink(whatsapp, waMessage)}
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={() => {
-              trackWaClick(pathname);
-              sendInboxMessage({ detail: waMessage, source: pathname || "/" });
-            }}
-            className="mt-3 block rounded-full bg-pink-600 px-5 py-3 text-center text-sm font-semibold text-white transition-colors hover:bg-pink-700"
+          <button
+            type="button"
+            onClick={handleClick}
+            disabled={sent}
+            className="mt-3 flex w-full items-center justify-center gap-1.5 rounded-full bg-pink-600 px-5 py-3 text-center text-sm font-semibold text-white transition-colors hover:bg-pink-700 disabled:cursor-default"
           >
-            Konsultasi Gratis
-          </a>
+            {sent ? (
+              <>
+                <Check className="h-4 w-4" /> Terkirim!
+              </>
+            ) : (
+              "Konsultasi Gratis"
+            )}
+          </button>
         </div>
       )}
     </header>
