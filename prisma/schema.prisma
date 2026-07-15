@@ -8,11 +8,13 @@ datasource db {
 }
 
 model Admin {
-  id        String   @id @default(cuid())
-  username  String   @unique
-  password  String
-  name      String   @default("Admin")
-  createdAt DateTime @default(now())
+  id             String    @id @default(cuid())
+  username       String    @unique
+  password       String
+  name           String    @default("Admin")
+  failedAttempts Int       @default(0)
+  lockedUntil    DateTime?
+  createdAt      DateTime  @default(now())
 }
 
 model Service {
@@ -75,9 +77,11 @@ model Event {
   path      String   @default("/")
   referrer  String   @default("")
   device    String   @default("desktop")
+  ip        String   @default("")
   createdAt DateTime @default(now())
 
   @@index([type, createdAt])
+  @@index([ip, createdAt])
 }
 
 model Message {
@@ -87,8 +91,10 @@ model Message {
   service   String   @default("")
   detail    String   @default("")
   source    String   @default("")
+  ip        String   @default("")
   status    String   @default("new")
   createdAt DateTime @default(now())
 
   @@index([status, createdAt])
+  @@index([ip, createdAt])
 }

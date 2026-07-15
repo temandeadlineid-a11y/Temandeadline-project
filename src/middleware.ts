@@ -14,11 +14,12 @@ export async function middleware(req: NextRequest) {
   }
 
   const token = req.cookies.get("td_admin")?.value;
-  if (token) {
+  // Sengaja TIDAK ada fallback secret: kalau JWT_SECRET belum diset,
+  // semua token dianggap tidak valid (fail closed), bukan diam-diam
+  // memvalidasi pakai secret yang bisa dilihat siapa pun di repo publik.
+  if (token && process.env.JWT_SECRET) {
     try {
-      const secret = new TextEncoder().encode(
-        process.env.JWT_SECRET || "temandeadline-dev-secret-change-me"
-      );
+      const secret = new TextEncoder().encode(process.env.JWT_SECRET);
       await jwtVerify(token, secret);
       return NextResponse.next();
     } catch {
