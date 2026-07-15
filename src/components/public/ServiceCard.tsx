@@ -7,25 +7,34 @@ import { trackWaClick } from "@/components/public/AnalyticsTracker";
 import { sendInboxMessage } from "@/lib/sendInboxMessage";
 
 // Kartu layanan: border tipis, hover terangkat halus, hierarki jelas.
-// Seluruh kartu bisa diklik untuk tanya-tanya layanan ini — pesan masuk
-// ke "Pesan Masuk" admin dulu, TIDAK langsung membuka WhatsApp.
+// Kalau `onAsk` diberikan (halaman /layanan), klik hanya scroll ke form
+// konsultasi di bawah dan pra-isi layanannya — TIDAK langsung kirim pesan,
+// supaya nama & no. WA pengunjung selalu ikut tercatat lewat form.
+// Kalau tidak, klik langsung catat minat ke "Pesan Masuk" (dipakai di
+// preview Beranda yang tidak punya form di halaman yang sama).
 
 export function ServiceCard({
   emoji,
   title,
   description,
+  onAsk,
 }: {
   emoji: string;
   title: string;
   description: string;
+  onAsk?: (title: string) => void;
 }) {
   const pathname = usePathname();
   const [sent, setSent] = useState(false);
 
   function handleClick() {
+    trackWaClick(pathname || "/");
+    if (onAsk) {
+      onAsk(title);
+      return;
+    }
     if (sent) return;
     const message = `Halo TemanDeadline! Saya tertarik dengan layanan ${title}, boleh dibantu?`;
-    trackWaClick(pathname || "/");
     sendInboxMessage({ service: title, detail: message, source: pathname || "/" });
     setSent(true);
     setTimeout(() => setSent(false), 5000);
