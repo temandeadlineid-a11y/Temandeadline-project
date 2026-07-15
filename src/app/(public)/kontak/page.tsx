@@ -44,10 +44,10 @@ export default async function KontakPage() {
   return (
     <>
       <PageHero
-        eyebrow="Kontak"
-        title="Ngobrol Dulu,"
-        accent="Santai Saja"
-        description="Konsultasi tidak dipungut biaya dan tidak mengikat. Ceritakan kebutuhanmu, kami bantu carikan solusinya."
+        eyebrow={content.kontakHeroEyebrow}
+        title={content.kontakHeroTitle}
+        accent={content.kontakHeroAccent}
+        description={content.kontakHeroDesc}
       />
 
       <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 md:py-20 lg:px-8">

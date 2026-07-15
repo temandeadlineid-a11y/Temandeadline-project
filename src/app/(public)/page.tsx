@@ -28,33 +28,17 @@ export default async function HomePage() {
   ];
 
   const values = [
-    {
-      icon: Clock,
-      title: "Selalu Tepat Waktu",
-      desc: "Deadline adalah janji. Kami tidak pernah menerima order yang tidak yakin bisa selesai on-time.",
-    },
-    {
-      icon: Sparkles,
-      title: "Orisinal & Rapi",
-      desc: "Dikerjakan dari nol, dicek plagiarisme, dan diformat sesuai standar. Bukan hasil copy-paste.",
-    },
-    {
-      icon: Wallet,
-      title: "Harga Transparan",
-      desc: "Estimasi jelas di awal, tanpa biaya tersembunyi. Bayar 50% dulu, sisanya setelah hasil di tangan.",
-    },
-    {
-      icon: ShieldCheck,
-      title: "Rahasia Terjamin",
-      desc: "Identitas dan file tugasmu tidak pernah dibagikan ke siapa pun. Privasi adalah prioritas kami.",
-    },
+    { icon: Clock, title: content.whyUs1Title, desc: content.whyUs1Desc },
+    { icon: Sparkles, title: content.whyUs2Title, desc: content.whyUs2Desc },
+    { icon: Wallet, title: content.whyUs3Title, desc: content.whyUs3Desc },
+    { icon: ShieldCheck, title: content.whyUs4Title, desc: content.whyUs4Desc },
   ];
 
   const steps = [
-    { no: "01", title: "Ceritakan Kebutuhanmu", desc: "Chat via WhatsApp, jelaskan tugas dan deadline-nya. Konsultasi awal gratis." },
-    { no: "02", title: "Deal Harga & DP", desc: "Kami kirim estimasi harga dan waktu. Setuju? Bayar DP 50% dan kami mulai." },
-    { no: "03", title: "Dikerjakan Ahlinya", desc: "Tugas dikerjakan tim berpengalaman. Kamu bisa pantau progresnya kapan saja." },
-    { no: "04", title: "Terima Hasil & Revisi", desc: "Hasil dikirim sebelum deadline. Kurang pas? Revisi gratis sesuai paket." },
+    { no: "01", title: content.how1Title, desc: content.how1Desc },
+    { no: "02", title: content.how2Title, desc: content.how2Desc },
+    { no: "03", title: content.how3Title, desc: content.how3Desc },
+    { no: "04", title: content.how4Title, desc: content.how4Desc },
   ];
 
   return (
@@ -126,10 +110,10 @@ export default async function HomePage() {
       <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6 md:py-24 lg:px-8">
         <Reveal>
           <SectionHeading
-            eyebrow="Layanan Kami"
-            title="Satu Tempat untuk"
-            accent="Semua Tugasmu"
-            description="Dari makalah sampai desain, semuanya dikerjakan oleh orang yang memang ahli di bidangnya."
+            eyebrow={content.layananSectionEyebrow}
+            title={content.layananSectionTitle}
+            accent={content.layananSectionAccent}
+            description={content.layananSectionDesc}
           />
         </Reveal>
         <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
@@ -159,11 +143,11 @@ export default async function HomePage() {
           <Reveal>
             <div className="mx-auto max-w-2xl text-center">
               <span className="text-xs font-bold uppercase tracking-[0.2em] text-pink-400">
-                Kenapa TemanDeadline
+                {content.whyUsEyebrow}
               </span>
               <h2 className="mt-3 font-display text-3xl font-semibold tracking-tight text-white md:text-4xl">
-                Bukan Sekadar Selesai, tapi{" "}
-                <em className="italic text-pink-400">Selesai dengan Baik</em>
+                {content.whyUsTitle}{" "}
+                <em className="italic text-pink-400">{content.whyUsAccent}</em>
               </h2>
             </div>
           </Reveal>
@@ -189,10 +173,10 @@ export default async function HomePage() {
       <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6 md:py-24 lg:px-8">
         <Reveal>
           <SectionHeading
-            eyebrow="Cara Kerja"
-            title="Semudah"
-            accent="Chat ke Teman"
-            description="Empat langkah sederhana dari konsultasi sampai tugasmu beres."
+            eyebrow={content.howEyebrow}
+            title={content.howTitle}
+            accent={content.howAccent}
+            description={content.howDesc}
           />
         </Reveal>
         <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
@@ -217,10 +201,10 @@ export default async function HomePage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <Reveal>
             <SectionHeading
-              eyebrow="Testimoni"
-              title="Kata Mereka yang"
-              accent="Sudah Terbantu"
-              description="Dari mahasiswa, karyawan, sampai pemilik usaha — inilah pengalaman mereka."
+              eyebrow={content.testimoniSectionEyebrow}
+              title={content.testimoniSectionTitle}
+              accent={content.testimoniSectionAccent}
+              description={content.testimoniSectionDesc}
             />
           </Reveal>
           <div className="mt-12 grid gap-5 md:grid-cols-3">

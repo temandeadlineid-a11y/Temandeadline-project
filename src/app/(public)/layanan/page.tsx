@@ -19,10 +19,10 @@ export default async function LayananPage() {
   return (
     <>
       <PageHero
-        eyebrow="Layanan"
-        title="Apa pun Tugasmu,"
-        accent="Kami Siap"
-        description="Setiap layanan dikerjakan oleh orang yang memang ahli di bidangnya — bukan satu orang yang mengerjakan semuanya."
+        eyebrow={content.layananHeroEyebrow}
+        title={content.layananHeroTitle}
+        accent={content.layananHeroAccent}
+        description={content.layananHeroDesc}
       />
 
       <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 md:py-20 lg:px-8">
@@ -41,17 +41,16 @@ export default async function LayananPage() {
         <Reveal>
           <div className="mt-16 rounded-3xl border border-pink-100 bg-pink-50/60 px-6 py-12 text-center md:px-12">
             <h2 className="font-display text-2xl font-semibold text-navy-800 md:text-3xl">
-              Tugasmu tidak ada di daftar?
+              {content.layananCtaTitle}
             </h2>
             <p className="mx-auto mt-3 max-w-xl text-slate-500">
-              Tenang, daftar di atas hanya yang paling sering dipesan. Ceritakan
-              saja kebutuhanmu — kalau kami bisa bantu, pasti kami bantu.
+              {content.layananCtaDesc}
             </p>
             <div className="mt-7">
               <WhatsAppButton
                 whatsapp={content.whatsapp}
-                message="Halo TemanDeadline! Saya punya kebutuhan tugas yang agak khusus, boleh tanya-tanya dulu?"
-                label="Tanya Dulu, Gratis"
+                message={content.layananCtaWaMessage}
+                label={content.layananCtaButtonLabel}
               />
             </div>
           </div>

@@ -23,6 +23,89 @@ export const DEFAULT_CONTENT: Record<string, string> = {
   ctaTitle: "Tugasmu Menunggu. Kami Siap Bantu.",
   ctaSubtitle:
     "Konsultasi dulu, gratis. Ceritakan kebutuhanmu dan tim kami akan kasih estimasi harga & waktu dalam hitungan menit.",
+
+  // Beranda - section Layanan (preview)
+  layananSectionEyebrow: "Layanan Kami",
+  layananSectionTitle: "Satu Tempat untuk",
+  layananSectionAccent: "Semua Tugasmu",
+  layananSectionDesc:
+    "Dari makalah sampai desain, semuanya dikerjakan oleh orang yang memang ahli di bidangnya.",
+
+  // Beranda - section Kenapa TemanDeadline
+  whyUsEyebrow: "Kenapa TemanDeadline",
+  whyUsTitle: "Bukan Sekadar Selesai, tapi",
+  whyUsAccent: "Selesai dengan Baik",
+  whyUs1Title: "Selalu Tepat Waktu",
+  whyUs1Desc:
+    "Deadline adalah janji. Kami tidak pernah menerima order yang tidak yakin bisa selesai on-time.",
+  whyUs2Title: "Orisinal & Rapi",
+  whyUs2Desc:
+    "Dikerjakan dari nol, dicek plagiarisme, dan diformat sesuai standar. Bukan hasil copy-paste.",
+  whyUs3Title: "Harga Transparan",
+  whyUs3Desc:
+    "Estimasi jelas di awal, tanpa biaya tersembunyi. Bayar 50% dulu, sisanya setelah hasil di tangan.",
+  whyUs4Title: "Rahasia Terjamin",
+  whyUs4Desc:
+    "Identitas dan file tugasmu tidak pernah dibagikan ke siapa pun. Privasi adalah prioritas kami.",
+
+  // Beranda - section Cara Kerja
+  howEyebrow: "Cara Kerja",
+  howTitle: "Semudah",
+  howAccent: "Chat ke Teman",
+  howDesc: "Empat langkah sederhana dari konsultasi sampai tugasmu beres.",
+  how1Title: "Ceritakan Kebutuhanmu",
+  how1Desc: "Chat via WhatsApp, jelaskan tugas dan deadline-nya. Konsultasi awal gratis.",
+  how2Title: "Deal Harga & DP",
+  how2Desc: "Kami kirim estimasi harga dan waktu. Setuju? Bayar DP 50% dan kami mulai.",
+  how3Title: "Dikerjakan Ahlinya",
+  how3Desc: "Tugas dikerjakan tim berpengalaman. Kamu bisa pantau progresnya kapan saja.",
+  how4Title: "Terima Hasil & Revisi",
+  how4Desc: "Hasil dikirim sebelum deadline. Kurang pas? Revisi gratis sesuai paket.",
+
+  // Beranda - section Testimoni (preview)
+  testimoniSectionEyebrow: "Testimoni",
+  testimoniSectionTitle: "Kata Mereka yang",
+  testimoniSectionAccent: "Sudah Terbantu",
+  testimoniSectionDesc:
+    "Dari mahasiswa, karyawan, sampai pemilik usaha — inilah pengalaman mereka.",
+
+  // Halaman Layanan
+  layananHeroEyebrow: "Layanan",
+  layananHeroTitle: "Apa pun Tugasmu,",
+  layananHeroAccent: "Kami Siap",
+  layananHeroDesc:
+    "Setiap layanan dikerjakan oleh orang yang memang ahli di bidangnya — bukan satu orang yang mengerjakan semuanya.",
+  layananCtaTitle: "Tugasmu tidak ada di daftar?",
+  layananCtaDesc:
+    "Tenang, daftar di atas hanya yang paling sering dipesan. Ceritakan saja kebutuhanmu — kalau kami bisa bantu, pasti kami bantu.",
+  layananCtaButtonLabel: "Tanya Dulu, Gratis",
+  layananCtaWaMessage:
+    "Halo TemanDeadline! Saya punya kebutuhan tugas yang agak khusus, boleh tanya-tanya dulu?",
+
+  // Halaman Testimoni
+  testimoniHeroEyebrow: "Testimoni",
+  testimoniHeroTitle: "Bukti, Bukan Sekadar",
+  testimoniHeroAccent: "Janji",
+  testimoniHeroDesc:
+    "Kami biarkan klien yang bercerita. Berikut pengalaman mereka yang sudah mempercayakan tugasnya pada TemanDeadline.",
+  testimoniCtaText: "Mau jadi cerita sukses berikutnya?",
+
+  // Halaman FAQ
+  faqHeroEyebrow: "FAQ",
+  faqHeroTitle: "Masih Ragu?",
+  faqHeroAccent: "Wajar Kok",
+  faqHeroDesc:
+    "Berikut jawaban untuk pertanyaan yang paling sering masuk ke WhatsApp kami. Kalau pertanyaanmu belum terjawab, langsung tanya saja.",
+  faqCtaTitle: "Pertanyaanmu belum terjawab?",
+  faqCtaDesc: "Tim kami standby setiap hari. Rata-rata pesan dibalas kurang dari 1 jam.",
+  faqCtaButtonLabel: "Tanya via WhatsApp",
+
+  // Halaman Kontak
+  kontakHeroEyebrow: "Kontak",
+  kontakHeroTitle: "Ngobrol Dulu,",
+  kontakHeroAccent: "Santai Saja",
+  kontakHeroDesc:
+    "Konsultasi tidak dipungut biaya dan tidak mengikat. Ceritakan kebutuhanmu, kami bantu carikan solusinya.",
 };
 
 export const DEFAULT_SERVICES = [

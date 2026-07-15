@@ -22,10 +22,10 @@ export default async function TestimoniPage() {
   return (
     <>
       <PageHero
-        eyebrow="Testimoni"
-        title="Bukti, Bukan Sekadar"
-        accent="Janji"
-        description="Kami biarkan klien yang bercerita. Berikut pengalaman mereka yang sudah mempercayakan tugasnya pada TemanDeadline."
+        eyebrow={content.testimoniHeroEyebrow}
+        title={content.testimoniHeroTitle}
+        accent={content.testimoniHeroAccent}
+        description={content.testimoniHeroDesc}
       />
 
       <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 md:py-20 lg:px-8">
@@ -45,7 +45,7 @@ export default async function TestimoniPage() {
         <Reveal>
           <div className="mt-16 text-center">
             <p className="text-slate-500">
-              Mau jadi cerita sukses berikutnya?
+              {content.testimoniCtaText}
             </p>
             <div className="mt-5">
               <WhatsAppButton

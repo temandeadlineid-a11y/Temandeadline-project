@@ -19,10 +19,10 @@ export default async function FaqPage() {
   return (
     <>
       <PageHero
-        eyebrow="FAQ"
-        title="Masih Ragu?"
-        accent="Wajar Kok"
-        description="Berikut jawaban untuk pertanyaan yang paling sering masuk ke WhatsApp kami. Kalau pertanyaanmu belum terjawab, langsung tanya saja."
+        eyebrow={content.faqHeroEyebrow}
+        title={content.faqHeroTitle}
+        accent={content.faqHeroAccent}
+        description={content.faqHeroDesc}
       />
 
       <section className="mx-auto max-w-3xl px-4 py-16 sm:px-6 md:py-20 lg:px-8">
@@ -33,17 +33,16 @@ export default async function FaqPage() {
         <Reveal>
           <div className="mt-14 rounded-3xl border border-slate-200 bg-slate-50/70 px-6 py-10 text-center">
             <h2 className="font-display text-2xl font-semibold text-navy-800">
-              Pertanyaanmu belum terjawab?
+              {content.faqCtaTitle}
             </h2>
             <p className="mx-auto mt-2 max-w-md text-sm text-slate-500">
-              Tim kami standby setiap hari. Rata-rata pesan dibalas kurang dari
-              1 jam.
+              {content.faqCtaDesc}
             </p>
             <div className="mt-6">
               <WhatsAppButton
                 whatsapp={content.whatsapp}
                 message="Halo TemanDeadline! Saya punya pertanyaan yang belum ada di FAQ."
-                label="Tanya via WhatsApp"
+                label={content.faqCtaButtonLabel}
                 size="md"
               />
             </div>
