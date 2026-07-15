@@ -11,6 +11,7 @@ export async function POST(req: Request) {
     const body = await req.json().catch(() => ({}));
 
     const name = String(body?.name || "").slice(0, 120);
+    const phone = String(body?.phone || "").slice(0, 40);
     const service = String(body?.service || "").slice(0, 120);
     const detail = String(body?.detail || "").slice(0, 2000);
     const source = String(body?.source || "/").slice(0, 190);
@@ -20,7 +21,7 @@ export async function POST(req: Request) {
     }
 
     await prisma.message.create({
-      data: { name, service, detail, source },
+      data: { name, phone, service, detail, source },
     });
 
     return NextResponse.json({ ok: true });

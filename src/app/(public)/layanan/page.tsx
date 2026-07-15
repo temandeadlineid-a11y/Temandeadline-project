@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { getContent, getServices } from "@/lib/data";
 import { PageHero } from "@/components/public/PageHero";
 import { ServiceCard } from "@/components/public/ServiceCard";
-import { WhatsAppButton } from "@/components/public/WhatsAppButton";
+import { ServiceInquiryForm } from "@/components/public/ServiceInquiryForm";
 import { Reveal } from "@/components/public/Reveal";
 
 export const dynamic = "force-dynamic";
@@ -39,19 +39,8 @@ export default async function LayananPage() {
         </div>
 
         <Reveal>
-          <div className="mt-16 rounded-3xl border border-pink-100 bg-pink-50/60 px-6 py-12 text-center md:px-12">
-            <h2 className="font-display text-2xl font-semibold text-navy-800 md:text-3xl">
-              {content.layananCtaTitle}
-            </h2>
-            <p className="mx-auto mt-3 max-w-xl text-slate-500">
-              {content.layananCtaDesc}
-            </p>
-            <div className="mt-7">
-              <WhatsAppButton
-                message={content.layananCtaWaMessage}
-                label={content.layananCtaButtonLabel}
-              />
-            </div>
+          <div className="mt-16">
+            <ServiceInquiryForm serviceOptions={services.map((s) => s.title)} />
           </div>
         </Reveal>
       </section>

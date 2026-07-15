@@ -124,16 +124,6 @@ const pages: PageSection[] = [
           { key: "layananHeroDesc", label: "Deskripsi", textarea: true },
         ],
       },
-      {
-        title: "CTA Bawah",
-        desc: "Ajakan di bagian bawah daftar layanan.",
-        fields: [
-          { key: "layananCtaTitle", label: "Judul" },
-          { key: "layananCtaDesc", label: "Deskripsi", textarea: true },
-          { key: "layananCtaButtonLabel", label: "Label Tombol" },
-          { key: "layananCtaWaMessage", label: "Pesan WA Otomatis", textarea: true },
-        ],
-      },
     ],
   },
   {

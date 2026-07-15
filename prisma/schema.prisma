@@ -83,6 +83,7 @@ model Event {
 model Message {
   id        String   @id @default(cuid())
   name      String   @default("")
+  phone     String   @default("")
   service   String   @default("")
   detail    String   @default("")
   source    String   @default("")

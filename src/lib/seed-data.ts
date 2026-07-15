@@ -75,12 +75,6 @@ export const DEFAULT_CONTENT: Record<string, string> = {
   layananHeroAccent: "Kami Siap",
   layananHeroDesc:
     "Setiap layanan dikerjakan oleh orang yang memang ahli di bidangnya — bukan satu orang yang mengerjakan semuanya.",
-  layananCtaTitle: "Tugasmu tidak ada di daftar?",
-  layananCtaDesc:
-    "Tenang, daftar di atas hanya yang paling sering dipesan. Ceritakan saja kebutuhanmu — kalau kami bisa bantu, pasti kami bantu.",
-  layananCtaButtonLabel: "Tanya Dulu, Gratis",
-  layananCtaWaMessage:
-    "Halo TemanDeadline! Saya punya kebutuhan tugas yang agak khusus, boleh tanya-tanya dulu?",
 
   // Halaman Testimoni
   testimoniHeroEyebrow: "Testimoni",

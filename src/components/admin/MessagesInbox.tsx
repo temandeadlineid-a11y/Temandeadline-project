@@ -8,6 +8,7 @@ import { buildWaLink, formatDateID } from "@/lib/utils";
 type Message = {
   id: string;
   name: string;
+  phone: string;
   service: string;
   detail: string;
   source: string;
@@ -19,22 +20,14 @@ type Filter = "all" | "new" | "read";
 
 export function MessagesInbox() {
   const [messages, setMessages] = useState<Message[]>([]);
-  const [whatsapp, setWhatsapp] = useState("");
   const [filter, setFilter] = useState<Filter>("all");
   const [loading, setLoading] = useState(true);
 
   async function load() {
     setLoading(true);
-    const [msgRes, contentRes] = await Promise.all([
-      fetch("/api/messages"),
-      fetch("/api/content"),
-    ]);
-    const [msgData, contentData] = await Promise.all([
-      msgRes.json(),
-      contentRes.json(),
-    ]);
-    setMessages(Array.isArray(msgData) ? msgData : []);
-    setWhatsapp(contentData?.whatsapp || "");
+    const res = await fetch("/api/messages");
+    const data = await res.json();
+    setMessages(Array.isArray(data) ? data : []);
     setLoading(false);
   }
 
@@ -120,6 +113,9 @@ export function MessagesInbox() {
                     <span className="font-bold text-navy-800">
                       {m.name || "Anonim"}
                     </span>
+                    {m.phone && (
+                      <span className="text-xs text-slate-400">{m.phone}</span>
+                    )}
                     {m.service && <Badge tone="pink">{m.service}</Badge>}
                     <Badge tone={m.status === "new" ? "green" : "slate"}>
                       {m.status === "new" ? "Baru" : "Dibaca"}
@@ -134,9 +130,14 @@ export function MessagesInbox() {
                   </p>
                 </div>
                 <div className="flex shrink-0 items-center gap-2">
-                  {whatsapp && (
+                  {m.phone && (
                     <a
-                      href={buildWaLink(whatsapp, m.detail)}
+                      href={buildWaLink(
+                        m.phone,
+                        `Halo ${m.name || "kak"}, terima kasih sudah menghubungi TemanDeadline${
+                          m.service ? ` mengenai layanan ${m.service}` : ""
+                        }.`
+                      )}
                       target="_blank"
                       rel="noopener noreferrer"
                       onClick={() => markStatus(m.id, "read")}

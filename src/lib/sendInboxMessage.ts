@@ -1,8 +1,9 @@
-// Mencatat pesan pengunjung ke "Pesan Masuk" admin sebelum membuka WhatsApp.
-// Fire-and-forget: kegagalan pencatatan tidak boleh menghalangi WA terbuka.
+// Mencatat pesan pengunjung ke "Pesan Masuk" admin.
+// Fire-and-forget: kegagalan pencatatan tidak boleh mengganggu pengunjung.
 
 export function sendInboxMessage(data: {
   name?: string;
+  phone?: string;
   service?: string;
   detail: string;
   source: string;
