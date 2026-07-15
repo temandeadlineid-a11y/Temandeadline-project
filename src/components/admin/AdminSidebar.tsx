@@ -12,6 +12,7 @@ import {
   MessageSquareQuote,
   HelpCircle,
   Users,
+  Settings,
   ExternalLink,
   LogOut,
   Menu,
@@ -28,6 +29,7 @@ const menu = [
   { href: "/admin/testimoni", label: "Testimoni", icon: MessageSquareQuote },
   { href: "/admin/faq", label: "FAQ", icon: HelpCircle },
   { href: "/admin/tim", label: "Tim (Internal)", icon: Users },
+  { href: "/admin/pengaturan", label: "Pengaturan", icon: Settings },
 ];
 
 export function AdminSidebar({ name }: { name: string }) {
