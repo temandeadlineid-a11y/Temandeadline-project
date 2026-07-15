@@ -18,21 +18,45 @@ type Message = {
 
 type Filter = "all" | "new" | "read";
 
+const POLL_INTERVAL_MS = 8000;
+
 export function MessagesInbox() {
   const [messages, setMessages] = useState<Message[]>([]);
   const [filter, setFilter] = useState<Filter>("all");
   const [loading, setLoading] = useState(true);
 
-  async function load() {
-    setLoading(true);
-    const res = await fetch("/api/messages");
-    const data = await res.json();
-    setMessages(Array.isArray(data) ? data : []);
-    setLoading(false);
+  async function load(showSpinner: boolean) {
+    if (showSpinner) setLoading(true);
+    try {
+      const res = await fetch("/api/messages");
+      const data = await res.json();
+      setMessages(Array.isArray(data) ? data : []);
+    } catch {
+      // Polling gagal sesekali tidak masalah, dicoba lagi di interval berikutnya
+    } finally {
+      if (showSpinner) setLoading(false);
+    }
   }
 
+  // Ambil sekali di awal (dengan spinner), lalu polling diam-diam di
+  // latar belakang supaya pesan baru muncul otomatis tanpa refresh.
+  // Berhenti polling saat tab tidak aktif biar hemat request.
   useEffect(() => {
-    load();
+    load(true);
+
+    const interval = setInterval(() => {
+      if (document.visibilityState === "visible") load(false);
+    }, POLL_INTERVAL_MS);
+
+    function handleVisibility() {
+      if (document.visibilityState === "visible") load(false);
+    }
+    document.addEventListener("visibilitychange", handleVisibility);
+
+    return () => {
+      clearInterval(interval);
+      document.removeEventListener("visibilitychange", handleVisibility);
+    };
   }, []);
 
   async function markStatus(id: string, status: "new" | "read") {
@@ -75,7 +99,16 @@ export function MessagesInbox() {
     <div className="space-y-6">
       <PageHeader
         title="Pesan Masuk"
-        description="Semua yang masuk lewat tombol WhatsApp & form konsultasi di website, sebelum kamu balas."
+        description={
+          <>
+            Semua yang masuk lewat tombol WhatsApp & form konsultasi di
+            website, sebelum kamu balas.{" "}
+            <span className="inline-flex items-center gap-1.5 text-emerald-600">
+              <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
+              Diperbarui otomatis
+            </span>
+          </>
+        }
       />
 
       <div className="flex gap-2">
