@@ -10,7 +10,6 @@ import { trackWaClick } from "@/components/public/AnalyticsTracker";
 const links = [
   { href: "/", label: "Beranda" },
   { href: "/layanan", label: "Layanan" },
-  { href: "/harga", label: "Harga" },
   { href: "/testimoni", label: "Testimoni" },
   { href: "/faq", label: "FAQ" },
 ];

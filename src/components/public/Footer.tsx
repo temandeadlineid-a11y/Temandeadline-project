@@ -29,7 +29,6 @@ export function Footer({ content }: { content: Record<string, string> }) {
               {[
                 { href: "/", label: "Beranda" },
                 { href: "/layanan", label: "Layanan" },
-                { href: "/harga", label: "Harga" },
                 { href: "/testimoni", label: "Testimoni" },
                 { href: "/faq", label: "FAQ" },
                 { href: "/kontak", label: "Kontak" },

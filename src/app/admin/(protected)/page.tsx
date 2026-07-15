@@ -1,7 +1,6 @@
 import Link from "next/link";
 import {
   Layers,
-  Tag,
   MessageSquareQuote,
   HelpCircle,
   Users,
@@ -23,10 +22,9 @@ async function getCounts() {
     const startOfToday = new Date();
     startOfToday.setHours(0, 0, 0, 0);
 
-    const [services, pricing, testimonials, faqs, team, viewsToday, clicksToday] =
+    const [services, testimonials, faqs, team, viewsToday, clicksToday] =
       await Promise.all([
         prisma.service.count(),
-        prisma.pricingTier.count(),
         prisma.testimonial.count(),
         prisma.faq.count(),
         prisma.teamMember.count(),
@@ -37,9 +35,9 @@ async function getCounts() {
           where: { type: "wa_click", createdAt: { gte: startOfToday } },
         }),
       ]);
-    return { ok: true, services, pricing, testimonials, faqs, team, viewsToday, clicksToday };
+    return { ok: true, services, testimonials, faqs, team, viewsToday, clicksToday };
   } catch {
-    return { ok: false, services: 0, pricing: 0, testimonials: 0, faqs: 0, team: 0, viewsToday: 0, clicksToday: 0 };
+    return { ok: false, services: 0, testimonials: 0, faqs: 0, team: 0, viewsToday: 0, clicksToday: 0 };
   }
 }
 
@@ -47,11 +45,10 @@ export default async function AdminDashboardPage() {
   const [session, counts] = await Promise.all([getAdminSession(), getCounts()]);
   const contentEmpty =
     counts.ok &&
-    counts.services + counts.pricing + counts.testimonials + counts.faqs === 0;
+    counts.services + counts.testimonials + counts.faqs === 0;
 
   const shortcuts = [
     { href: "/admin/layanan", label: "Layanan", count: counts.services, icon: Layers },
-    { href: "/admin/harga", label: "Paket Harga", count: counts.pricing, icon: Tag },
     { href: "/admin/testimoni", label: "Testimoni", count: counts.testimonials, icon: MessageSquareQuote },
     { href: "/admin/faq", label: "FAQ", count: counts.faqs, icon: HelpCircle },
     { href: "/admin/tim", label: "Anggota Tim", count: counts.team, icon: Users },
@@ -83,8 +80,8 @@ export default async function AdminDashboardPage() {
               Konten masih kosong nih
             </h2>
             <p className="mt-1 text-sm text-slate-500">
-              Isi otomatis dengan data contoh (layanan, harga, testimoni, FAQ)
-              biar website langsung terlihat lengkap. Nanti tinggal diedit.
+              Isi otomatis dengan data contoh (layanan, testimoni, FAQ) biar
+              website langsung terlihat lengkap. Nanti tinggal diedit.
             </p>
           </div>
           <SeedButton />

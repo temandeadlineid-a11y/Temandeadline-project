@@ -4,23 +4,20 @@ import {
   getContent,
   getServices,
   getTestimonials,
-  getPricing,
 } from "@/lib/data";
 import { WhatsAppButton } from "@/components/public/WhatsAppButton";
 import { ServiceCard } from "@/components/public/ServiceCard";
 import { TestimonialCard } from "@/components/public/TestimonialCard";
-import { PricingCard } from "@/components/public/PricingCard";
 import { SectionHeading } from "@/components/public/SectionHeading";
 import { Reveal } from "@/components/public/Reveal";
 
 export const dynamic = "force-dynamic";
 
 export default async function HomePage() {
-  const [content, services, testimonials, pricing] = await Promise.all([
+  const [content, services, testimonials] = await Promise.all([
     getContent(),
     getServices(),
     getTestimonials(),
-    getPricing(),
   ]);
 
   const stats = [
@@ -247,34 +244,6 @@ export default async function HomePage() {
             </Link>
           </div>
         </div>
-      </section>
-
-      {/* ================= HARGA (preview) ================= */}
-      <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6 md:py-24 lg:px-8">
-        <Reveal>
-          <SectionHeading
-            eyebrow="Harga"
-            title="Transparan Sejak"
-            accent="Awal"
-            description="Tidak ada biaya tersembunyi. Pilih paket sesuai kebutuhan dan deadline-mu."
-          />
-        </Reveal>
-        <div className="mx-auto mt-14 grid max-w-5xl gap-6 md:grid-cols-3">
-          {pricing.map((p, i) => (
-            <Reveal key={p.id} delay={i * 70}>
-              <PricingCard tier={p} whatsapp={content.whatsapp} />
-            </Reveal>
-          ))}
-        </div>
-        <p className="mt-8 text-center text-sm text-slate-400">
-          Harga final menyesuaikan tingkat kesulitan &amp; deadline.{" "}
-          <Link
-            href="/harga"
-            className="font-semibold text-pink-600 hover:text-pink-700"
-          >
-            Lihat detail harga
-          </Link>
-        </p>
       </section>
 
       {/* ================= CTA PENUTUP ================= */}
