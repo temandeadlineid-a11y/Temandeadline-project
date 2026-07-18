@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Send, CheckCircle2 } from "lucide-react";
 import { trackWaClick } from "@/components/public/AnalyticsTracker";
 import { sendInboxMessage } from "@/lib/sendInboxMessage";
@@ -11,10 +11,8 @@ import { sendInboxMessage } from "@/lib/sendInboxMessage";
 
 export function ServiceInquiryForm({
   serviceOptions,
-  selectedService,
 }: {
   serviceOptions: string[];
-  selectedService?: string | null;
 }) {
   const options = [...serviceOptions, "Lainnya"];
 
@@ -24,15 +22,6 @@ export function ServiceInquiryForm({
   const [pesan, setPesan] = useState("");
   const [sent, setSent] = useState(false);
   const [error, setError] = useState("");
-
-  // Kalau pengunjung klik "Tanya via WhatsApp" di kartu layanan tertentu,
-  // dropdown ini otomatis ikut terisi.
-  useEffect(() => {
-    if (selectedService && options.includes(selectedService)) {
-      setLayanan(selectedService);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectedService]);
 
   function handleSubmit() {
     if (!nama.trim() || !phone.trim()) {

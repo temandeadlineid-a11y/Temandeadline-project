@@ -3,49 +3,43 @@
 import { useState } from "react";
 import { usePathname } from "next/navigation";
 import { MessageCircle, Check } from "lucide-react";
+import { buildWaLink } from "@/lib/utils";
 import { trackWaClick } from "@/components/public/AnalyticsTracker";
 import { sendInboxMessage } from "@/lib/sendInboxMessage";
 
 // Kartu layanan: border tipis, hover terangkat halus, hierarki jelas.
-// Kalau `onAsk` diberikan (halaman /layanan), klik hanya scroll ke form
-// konsultasi di bawah dan pra-isi layanannya — TIDAK langsung kirim pesan,
-// supaya nama & no. WA pengunjung selalu ikut tercatat lewat form.
-// Kalau tidak, klik langsung catat minat ke "Pesan Masuk" (dipakai di
-// preview Beranda yang tidak punya form di halaman yang sama).
+// Klik "Tanya via WhatsApp" langsung membuka chat WhatsApp admin (juga
+// tetap dicatat ke "Pesan Masuk" di admin sebagai arsip).
 
 export function ServiceCard({
   emoji,
   title,
   description,
-  onAsk,
+  whatsapp,
 }: {
   emoji: string;
   title: string;
   description: string;
-  onAsk?: (title: string) => void;
+  whatsapp: string;
 }) {
   const pathname = usePathname();
   const [sent, setSent] = useState(false);
+  const message = `Halo TemanDeadline! Saya tertarik dengan layanan ${title}, boleh dibantu?`;
 
   function handleClick() {
     trackWaClick(pathname || "/");
-    if (onAsk) {
-      onAsk(title);
-      return;
-    }
-    if (sent) return;
-    const message = `Halo TemanDeadline! Saya tertarik dengan layanan ${title}, boleh dibantu?`;
     sendInboxMessage({ service: title, detail: message, source: pathname || "/" });
     setSent(true);
     setTimeout(() => setSent(false), 5000);
   }
 
   return (
-    <button
-      type="button"
+    <a
+      href={buildWaLink(whatsapp, message)}
+      target="_blank"
+      rel="noopener noreferrer"
       onClick={handleClick}
-      disabled={sent}
-      className="group block w-full rounded-2xl border border-slate-200 bg-white p-6 text-left transition-all duration-300 hover:-translate-y-1 hover:border-pink-200 hover:shadow-lift disabled:cursor-default disabled:hover:translate-y-0"
+      className="group block w-full rounded-2xl border border-slate-200 bg-white p-6 text-left transition-all duration-300 hover:-translate-y-1 hover:border-pink-200 hover:shadow-lift"
     >
       <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-pink-50 text-2xl transition-colors group-hover:bg-pink-100">
         <span aria-hidden>{emoji}</span>
@@ -57,7 +51,7 @@ export function ServiceCard({
       {sent ? (
         <div className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-emerald-600">
           <Check className="h-4 w-4" />
-          Pesan terkirim, kami segera balas!
+          Membuka WhatsApp...
         </div>
       ) : (
         <div className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-pink-600">
@@ -65,6 +59,6 @@ export function ServiceCard({
           Tanya via WhatsApp
         </div>
       )}
-    </button>
+    </a>
   );
 }
