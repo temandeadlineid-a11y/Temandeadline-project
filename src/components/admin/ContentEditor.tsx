@@ -143,15 +143,6 @@ const pages: PageSection[] = [
           { key: "faqHeroDesc", label: "Deskripsi", textarea: true },
         ],
       },
-      {
-        title: "CTA Bawah",
-        desc: "Ajakan di bagian bawah daftar FAQ.",
-        fields: [
-          { key: "faqCtaTitle", label: "Judul" },
-          { key: "faqCtaDesc", label: "Deskripsi", textarea: true },
-          { key: "faqCtaButtonLabel", label: "Label Tombol" },
-        ],
-      },
     ],
   },
   {

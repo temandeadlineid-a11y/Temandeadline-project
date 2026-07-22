@@ -84,9 +84,6 @@ export const DEFAULT_CONTENT: Record<string, string> = {
   faqHeroAccent: "Wajar Kok",
   faqHeroDesc:
     "Berikut jawaban untuk pertanyaan yang paling sering masuk ke WhatsApp kami. Kalau pertanyaanmu belum terjawab, langsung tanya saja.",
-  faqCtaTitle: "Pertanyaanmu belum terjawab?",
-  faqCtaDesc: "Tim kami standby setiap hari. Rata-rata pesan dibalas kurang dari 1 jam.",
-  faqCtaButtonLabel: "Tanya via WhatsApp",
 
   // Halaman Kontak
   kontakHeroEyebrow: "Kontak",
