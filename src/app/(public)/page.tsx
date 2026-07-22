@@ -20,13 +20,6 @@ export default async function HomePage() {
     getTestimonials(),
   ]);
 
-  const stats = [
-    { value: content.statProjects, label: "Proyek Selesai" },
-    { value: content.statSatisfaction, label: "Klien Puas" },
-    { value: content.statRating, label: "Rating Klien" },
-    { value: content.statResponse, label: "Respon Chat" },
-  ];
-
   const values = [
     { icon: Clock, title: content.whyUs1Title, desc: content.whyUs1Desc },
     { icon: Sparkles, title: content.whyUs2Title, desc: content.whyUs2Desc },
@@ -64,20 +57,6 @@ export default async function HomePage() {
             <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-slate-500">
               {content.heroSubtitle}
             </p>
-          </div>
-        </div>
-
-        {/* Strip statistik */}
-        <div className="border-y border-pink-100 bg-pink-50/60">
-          <div className="mx-auto grid max-w-7xl grid-cols-2 gap-6 px-4 py-8 sm:px-6 md:grid-cols-4 lg:px-8">
-            {stats.map((s) => (
-              <div key={s.label} className="text-center">
-                <div className="font-display text-3xl font-semibold text-navy-800 md:text-4xl">
-                  {s.value}
-                </div>
-                <div className="mt-1 text-sm text-slate-500">{s.label}</div>
-              </div>
-            ))}
           </div>
         </div>
       </section>

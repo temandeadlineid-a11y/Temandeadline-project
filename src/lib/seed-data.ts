@@ -15,10 +15,6 @@ export const DEFAULT_CONTENT: Record<string, string> = {
   email: "halo@temandeadline.id",
   instagram: "temandeadline.id",
   jamOperasional: "Setiap hari, 08.00 - 23.00 WIB",
-  statProjects: "500+",
-  statSatisfaction: "98%",
-  statRating: "4.9/5",
-  statResponse: "< 1 Jam",
   ctaTitle: "Tugasmu Menunggu. Kami Siap Bantu.",
   ctaSubtitle:
     "Konsultasi dulu, gratis. Ceritakan kebutuhanmu dan tim kami akan kasih estimasi harga & waktu dalam hitungan menit.",

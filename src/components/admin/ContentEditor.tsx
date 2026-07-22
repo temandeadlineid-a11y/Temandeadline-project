@@ -36,16 +36,6 @@ const pages: PageSection[] = [
         ],
       },
       {
-        title: "Statistik",
-        desc: "Empat angka kebanggaan di bawah hero. Isi dengan data jujur.",
-        fields: [
-          { key: "statProjects", label: "Proyek Selesai" },
-          { key: "statSatisfaction", label: "Klien Puas" },
-          { key: "statRating", label: "Rating Klien" },
-          { key: "statResponse", label: "Respon Chat" },
-        ],
-      },
-      {
         title: "Section Layanan (preview)",
         desc: "Judul pengantar sebelum daftar layanan.",
         fields: [
