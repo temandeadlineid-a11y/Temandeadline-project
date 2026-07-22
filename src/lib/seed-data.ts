@@ -77,7 +77,6 @@ export const DEFAULT_CONTENT: Record<string, string> = {
   testimoniHeroAccent: "Janji",
   testimoniHeroDesc:
     "Kami biarkan klien yang bercerita. Berikut pengalaman mereka yang sudah mempercayakan tugasnya pada TemanDeadline.",
-  testimoniCtaText: "Mau jadi cerita sukses berikutnya?",
 
   // Halaman FAQ
   faqHeroEyebrow: "FAQ",

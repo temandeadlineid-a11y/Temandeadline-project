@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { getContent, getTestimonials } from "@/lib/data";
 import { PageHero } from "@/components/public/PageHero";
 import { TestimonialCard } from "@/components/public/TestimonialCard";
-import { WhatsAppButton } from "@/components/public/WhatsAppButton";
 import { Reveal } from "@/components/public/Reveal";
 
 export const dynamic = "force-dynamic";
@@ -41,19 +40,6 @@ export default async function TestimoniPage() {
             </Reveal>
           ))}
         </div>
-
-        <Reveal>
-          <div className="mt-16 text-center">
-            <p className="text-slate-500">
-              {content.testimoniCtaText}
-            </p>
-            <div className="mt-5">
-              <WhatsAppButton
-                message={content.waMessage}
-              />
-            </div>
-          </div>
-        </Reveal>
       </section>
     </>
   );

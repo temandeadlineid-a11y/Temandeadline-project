@@ -128,11 +128,6 @@ const pages: PageSection[] = [
           { key: "testimoniHeroDesc", label: "Deskripsi", textarea: true },
         ],
       },
-      {
-        title: "CTA Bawah",
-        desc: "Ajakan kecil di bagian bawah daftar testimoni.",
-        fields: [{ key: "testimoniCtaText", label: "Teks Ajakan" }],
-      },
     ],
   },
   {
