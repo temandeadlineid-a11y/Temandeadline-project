@@ -14,7 +14,7 @@ export default async function PublicLayout({
   return (
     <div className="flex min-h-screen flex-col">
       <AnalyticsTracker />
-      <Navbar waMessage={content.waMessage} />
+      <Navbar />
       <main className="flex-1">{children}</main>
       <Footer content={content} />
     </div>

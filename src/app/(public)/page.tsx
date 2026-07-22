@@ -5,7 +5,6 @@ import {
   getServices,
   getTestimonials,
 } from "@/lib/data";
-import { WhatsAppButton } from "@/components/public/WhatsAppButton";
 import { ServiceCard } from "@/components/public/ServiceCard";
 import { TestimonialCard } from "@/components/public/TestimonialCard";
 import { SectionHeading } from "@/components/public/SectionHeading";
@@ -205,10 +204,12 @@ export default async function HomePage() {
                 {content.ctaSubtitle}
               </p>
               <div className="mt-8">
-                <WhatsAppButton
-                  message={content.waMessage}
-                  label="Mulai Konsultasi Gratis"
-                />
+                <Link
+                  href="/layanan#konsultasi-form"
+                  className="inline-flex items-center justify-center gap-2 rounded-full bg-pink-600 px-7 py-3.5 font-semibold text-white shadow-pinkglow transition-all duration-200 hover:-translate-y-0.5 hover:bg-pink-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink-500 focus-visible:ring-offset-2"
+                >
+                  Mulai Konsultasi Gratis
+                </Link>
               </div>
               <p className="mt-5 text-sm text-slate-400">
                 Gratis, tanpa komitmen apa pun.

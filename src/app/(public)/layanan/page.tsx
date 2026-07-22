@@ -40,7 +40,7 @@ export default async function LayananPage() {
         </div>
 
         <Reveal>
-          <div className="mt-16">
+          <div id="konsultasi-form" className="mt-16 scroll-mt-24">
             <ServiceInquiryForm serviceOptions={services.map((s) => s.title)} />
           </div>
         </Reveal>
