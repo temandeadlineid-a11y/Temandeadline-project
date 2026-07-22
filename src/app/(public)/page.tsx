@@ -56,36 +56,13 @@ export default async function HomePage() {
 
         <div className="mx-auto max-w-7xl px-4 pb-16 pt-20 sm:px-6 md:pb-24 md:pt-28 lg:px-8">
           <div className="mx-auto max-w-3xl text-center">
-            <span className="inline-flex items-center gap-2 rounded-full border border-pink-200 bg-pink-50 px-4 py-1.5 text-sm font-medium text-pink-700">
-              <span className="h-1.5 w-1.5 rounded-full bg-pink-600" />
-              {content.heroBadge}
-            </span>
-
-            <h1 className="mt-7 font-display text-4xl font-semibold leading-tight tracking-tight text-navy-800 md:text-6xl">
+            <h1 className="font-display text-4xl font-semibold leading-tight tracking-tight text-navy-800 md:text-6xl">
               {content.heroTitle}{" "}
               <em className="italic text-pink-600">{content.heroAccent}</em>
             </h1>
 
             <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-slate-500">
               {content.heroSubtitle}
-            </p>
-
-            <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
-              <WhatsAppButton
-                message={content.waMessage}
-                className="w-full sm:w-auto"
-              />
-              <Link
-                href="/layanan"
-                className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-slate-300 bg-white px-7 py-3.5 font-semibold text-navy-800 transition-all duration-200 hover:border-pink-300 hover:bg-pink-50 sm:w-auto"
-              >
-                Lihat Layanan <ArrowRight className="h-4 w-4" />
-              </Link>
-            </div>
-
-            <p className="mt-6 text-sm text-slate-400">
-              Respon &lt; 1 jam &bull; Revisi gratis &bull; 100% rahasia
-              terjaga
             </p>
           </div>
         </div>

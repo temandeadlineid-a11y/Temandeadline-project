@@ -6,7 +6,6 @@
 // ============================================================
 
 export const DEFAULT_CONTENT: Record<string, string> = {
-  heroBadge: "Dipercaya 500+ mahasiswa & profesional",
   heroTitle: "Deadline Mepet? Tenang,",
   heroAccent: "Ada Ahlinya.",
   heroSubtitle:

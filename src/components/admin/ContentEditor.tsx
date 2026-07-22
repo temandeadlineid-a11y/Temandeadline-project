@@ -26,7 +26,6 @@ const pages: PageSection[] = [
         title: "Hero",
         desc: "Bagian paling atas yang pertama dilihat pengunjung.",
         fields: [
-          { key: "heroBadge", label: "Badge Kecil" },
           { key: "heroTitle", label: "Judul Utama" },
           {
             key: "heroAccent",
